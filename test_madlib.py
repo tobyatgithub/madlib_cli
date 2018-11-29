@@ -10,10 +10,11 @@ ln_two = "What are a {Large Animal} and backpacking {Small Animal} to do? " \
 "worlds connected to A {First Name's} Lair. There are {Number} {Plural Noun} in"\
 "the game, along with hundreds of other goodies for you to find.\n\n"
 
-
+# test for run()
 def test_run_exist():
     assert(run)
 
+# test for extract_key_wrods, the most heavy lifting function in this task
 def test_extract_key_words():
     ln_one = "I the {Adjective} and {Adjective} {A First Name} have {Past Tense Verb} " \
     "{A First Name}'s {Adjective} sister and plan to steal her {Adjective} {Plural Noun}!\n"
@@ -26,5 +27,23 @@ def test_extract_key_words():
     assert(expected2 == actual[1])
 
 
+def test_extract_key_words2():
+    # test empty case
+    actual = extract_key_words("")
+    expected1 = []
+    expected2 = ""
+    assert(expected1 == actual[0])
+    assert(expected2 == actual[1])
+
+
+# test for formating, basically it's one line with ("%s" %string)    
 def test_format_story1():
     assert(format_story("111 %s %s %s", ["a","b","c"])=="111 a b c")
+
+def test_format_story1():
+    assert(format_story("{} %s 231 %s fsaddd %s pumpkin %s\n", ["1","bob","cat", "500"])==\
+    "{} 1 231 bob fsaddd cat pumpkin 500\n")    
+
+
+# really not sure how to test other functions....
+# since most of them are fairly simple and straight forward...
